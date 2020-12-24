@@ -44,7 +44,7 @@ func register(){
 		&registry.Node{
 			IP:   "192.168.2.246",
 			Port: 2004,
-			Weight:2,
+			Weight:50,//参考是50
 		},
 	)
 	registryInst.Register(context.TODO(), service)

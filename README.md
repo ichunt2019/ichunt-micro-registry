@@ -3,11 +3,7 @@
 
 `import引入`
 
-
-"github.com/ichunt2019/ichunt-micro-registry/proxy/load_balance"
-
 "github.com/ichunt2019/ichunt-micro-registry/registry"
-
 _ "github.com/ichunt2019/ichunt-micro-registry/registry/etcd"
 
 
@@ -39,19 +35,12 @@ func register(){
 		return
 	}
 
-	load_balance.Init(registryInst)
-
 	service := &registry.Service{
 		Name: "comment_service",//注册服务的名称
 	}
 
 	//服务节点信息 ip  端口  权重
 	service.Nodes = append(service.Nodes,
-		//&registry.Node{
-	//	IP:   "192.168.2.232",
-	//	Port: 2003,
-	//	Weight:1,
-	//},
 		&registry.Node{
 			IP:   "192.168.2.246",
 			Port: 2004,

@@ -3,10 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/ichunt2019/ichunt-micro-registry/proxy/load_balance"
 	"github.com/ichunt2019/ichunt-micro-registry/registry"
 	_ "github.com/ichunt2019/ichunt-micro-registry/registry/etcd"
-	_"github.com/imroc/req"
+	_ "github.com/imroc/req"
 	"io"
 	"io/ioutil"
 	"log"
@@ -58,18 +57,13 @@ func register(){
 		return
 	}
 
-	load_balance.Init(registryInst)
+	//load_balance.Init(registryInst)
 
 	service := &registry.Service{
 		Name: "comment_service",
 	}
 
 	service.Nodes = append(service.Nodes,
-		//&registry.Node{
-	//	IP:   "192.168.2.232",
-	//	Port: 2003,
-	//	Weight:1,
-	//},
 		&registry.Node{
 			IP:   "192.168.2.246",
 			Port: 2004,

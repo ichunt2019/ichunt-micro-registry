@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/coreos/etcd/clientv3"
-	"github.com/ichunt2019/ichunt-micro-registry/proxy/load_balance"
+	//"github.com/ichunt2019/ichunt-micro-registry/proxy/load_balance"
 	"github.com/ichunt2019/ichunt-micro-registry/registry"
 	"path"
 	"sync"
@@ -304,7 +304,7 @@ func (e *EtcdRegistry) GetService(ctx context.Context, name string) (service *re
 	allServiceInfoNew.ServiceMap[name] = service
 	e.value.Store(allServiceInfoNew)
 
-	load_balance.LoadBalanceConfig.UpdateConf(allServiceInfoNew)
+	//load_balance.LoadBalanceConfig.UpdateConf(allServiceInfoNew)
 
 	return
 }
@@ -352,5 +352,5 @@ func (e *EtcdRegistry) syncServiceFromEtcd() {
 	}
 
 	e.value.Store(allServiceInfoNew)
-	load_balance.LoadBalanceConfig.UpdateConf(allServiceInfoNew)
+	//load_balance.LoadBalanceConfig.UpdateConf(allServiceInfoNew)
 }

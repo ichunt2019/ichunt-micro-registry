@@ -4,6 +4,7 @@
 `import引入`
 
 "github.com/ichunt2019/ichunt-micro-registry/registry"
+
 _ "github.com/ichunt2019/ichunt-micro-registry/registry/etcd"
 
 

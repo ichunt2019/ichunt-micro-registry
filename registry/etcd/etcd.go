@@ -81,6 +81,7 @@ func (e *EtcdRegistry) Init(ctx context.Context, opts ...registry.Option) (err e
 		Endpoints:   e.options.Addrs,
 		DialTimeout: e.options.Timeout,
 		Password:	 e.options.Password,
+		Username:    e.options.Username,
 	}
 
 	e.client, err = clientv3.New(clientConfig)

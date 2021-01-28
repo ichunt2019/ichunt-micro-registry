@@ -7,6 +7,7 @@ import (
 type Options struct {
 	Addrs   []string
 	Timeout time.Duration
+	Username string
 	Password string
 	// example:  /xxx_company/app/kuaishou/service_A/10.192.1.1:8801
 	// example:  /xxx_company/app/kuaishou/service_A/10.192.1.2:8801
@@ -31,6 +32,12 @@ func WithAddrs(addrs []string) Option {
 func WithPasswrod(password string) Option {
 	return func(opts *Options) {
 		opts.Password = password
+	}
+}
+
+func WithUsername(username string) Option {
+	return func(opts *Options) {
+		opts.Username = username
 	}
 }
 

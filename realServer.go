@@ -46,6 +46,7 @@ func register(){
 		registry.WithAddrs([]string{"192.168.2.232:2379"}),
 		registry.WithTimeout(time.Second),
 		registry.WithPasswrod(""),
+		registry.WithPasswrod(""),
 		registry.WithRegistryPath("/ichuntMicroService/"),
 		registry.WithHeartBeat(5),
 	)

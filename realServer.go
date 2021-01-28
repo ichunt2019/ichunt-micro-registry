@@ -1,9 +1,9 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"github.com/ichunt2019/ichunt-micro-registry/registry"
+	"github.com/ichunt2019/ichunt-micro-registry/config"
 	_ "github.com/ichunt2019/ichunt-micro-registry/registry/etcd"
 	_ "github.com/imroc/req"
 	"io"
@@ -27,7 +27,23 @@ func main() {
 	rs2.Run()
 
 	//服务注册
-	register()
+	//register()
+
+	nodes := []*registry.Node{
+		{
+			IP:   "192.168.2.246",
+			Port: 2004,
+			Weight:2,
+		},
+	}
+
+	etcdConfig := registry.EtcdConfig{
+		Address:  []string{"192.168.2.232:2379"},
+		Username: "",
+		Password: "",
+		Path:"/ichuntMicroService/",
+	}
+	config.Register("sku_server",etcdConfig,nodes)
 
 
 	//监听关闭信号
@@ -40,39 +56,6 @@ type RealServer struct {
 	Addr string
 }
 
-
-func register(){
-	registryInst, err := registry.InitRegistry(context.TODO(), "etcd",
-		registry.WithAddrs([]string{"192.168.2.232:2379"}),
-		registry.WithTimeout(time.Second),
-		registry.WithPasswrod(""),
-		registry.WithPasswrod(""),
-		registry.WithRegistryPath("/ichuntMicroService/"),
-		registry.WithHeartBeat(5),
-	)
-
-
-
-	if err != nil {
-		fmt.Printf("init registry failed, err:%v", err)
-		return
-	}
-
-	//load_balance.Init(registryInst)
-
-	service := &registry.Service{
-		Name: "comment_service",
-	}
-
-	service.Nodes = append(service.Nodes,
-		&registry.Node{
-			IP:   "192.168.2.246",
-			Port: 2004,
-			Weight:2,
-		},
-	)
-	registryInst.Register(context.TODO(), service)
-}
 
 func (r *RealServer) Run() {
 	log.Println("Starting httpserver at " + r.Addr)

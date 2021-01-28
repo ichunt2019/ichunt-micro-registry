@@ -18,3 +18,11 @@ type Node struct {
 type AllServiceInfo struct {
 	ServiceMap map[string]*Service  //节点信息 servicename node
 }
+
+
+type EtcdConfig struct {
+	Address []string
+	Username     string
+	Password     string
+	Path     string
+}

@@ -40,7 +40,7 @@ register key:/ichuntMicroService/sku_server/192.168.1.234:60014
 register key:/ichuntMicroService/sku_server/192.168.1.235:60014
 
 设计思路：
-![Image text](http://img.ichunt.com/images/github.com/beff335d3faa4ace7625c5ce607763ac.png)
+![Image text](https://img.ichunt.com/images/github.com/beff335d3faa4ace7625c5ce607763ac.png)
 
 
 

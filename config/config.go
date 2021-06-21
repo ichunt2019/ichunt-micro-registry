@@ -13,7 +13,7 @@ func Register(microServieName string,etcdConfig registry.EtcdConfig,nodes []*reg
 	registryInst, err := registry.InitRegistry(context.TODO(), "etcd",
 		registry.WithAddrs(etcdConfig.Address),
 		registry.WithTimeout(time.Second),
-		registry.WithPasswrod(etcdConfig.Username),
+		registry.WithUsername(etcdConfig.Username),
 		registry.WithPasswrod(etcdConfig.Password),
 		registry.WithRegistryPath(etcdConfig.Path),
 		registry.WithHeartBeat(5),
